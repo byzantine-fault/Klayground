@@ -136,3 +136,15 @@ body,
 .footer-text:hover {
   color: #fff;
 }
+
+.ant-dropdown-menu {
+  margin-top: 5px;
+}
+
+.ant-dropdown-menu-item:hover {
+  background: rgba(0, 0, 0, 0) !important;
+  color: #36cfc9;
+}
+.ant-dropdown-menu-item-only-child:hover .ant-typography {
+  color: #36cfc9;
+}
