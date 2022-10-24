@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'JetBrainsMono';
+  src: url(../assets/fonts/JetBrainsMono-Regular.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'BlackHanSans';
+  src: url(../assets/fonts/black-han-sans.woff2) format('woff2');
+}
