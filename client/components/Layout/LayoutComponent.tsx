@@ -21,13 +21,13 @@ function LayoutComponent({ children }: any) {
       </Content>
       <Footer style={{ textAlign: 'center' }}>
         <Row justify="center">
-          <Col xs={24} lg={6} style={{ marginBottom: '30px' }}>
+          <Col xs={24} lg={4} style={{ marginBottom: '30px' }}>
             <Space direction="vertical">
               <Image alt="logo" src={logoImage} width={120} />
               <Text style={{ fontSize: '12px' }}>Created by Team AMBUSH ©2022</Text>
             </Space>
           </Col>
-          <Col xs={24} lg={6} style={{ marginBottom: '30px' }}>
+          <Col xs={24} lg={4} style={{ marginBottom: '30px' }}>
             <Space direction="vertical">
               <Title level={5}>Link</Title>
               <Text
@@ -38,7 +38,7 @@ function LayoutComponent({ children }: any) {
               </Text>
             </Space>
           </Col>
-          <Col xs={24} lg={6} style={{ marginBottom: '30px' }}>
+          <Col xs={24} lg={4} style={{ marginBottom: '30px' }}>
             <Space direction="vertical">
               <Title level={5}>Team Member</Title>
               <Text
@@ -52,6 +52,17 @@ function LayoutComponent({ children }: any) {
                 className={'footer-text'}
               >
                 qudgus9601
+              </Text>
+            </Space>
+          </Col>
+          <Col xs={24} lg={4} style={{ marginBottom: '30px' }}>
+            <Space direction="vertical">
+              <Title level={5}>Family Site</Title>
+              <Text
+                onClick={() => window.open('https://www.havruta.guru')}
+                className={'footer-text'}
+              >
+                하브루타 DAO
               </Text>
             </Space>
           </Col>

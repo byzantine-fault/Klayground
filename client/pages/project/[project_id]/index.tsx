@@ -1,5 +1,4 @@
 import React from 'react';
-import { useRouter } from 'next/router';
 import { LinkOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import {
   Avatar,
@@ -16,12 +15,15 @@ import {
 } from 'antd';
 import { ellipsisMiddle } from '../../../lib/ellipsisMiddle';
 import NFTCard from '../../../components/NFTCard';
+import useSWR from 'swr';
 
 const { Title, Text, Paragraph } = Typography;
 
 const projectContractAddress = '0xce70eef5adac126c37c8bc0c1228d48b70066d03';
 
 function Project() {
+  const { data: items } = useSWR(`${process.env.NEXT_PUBLIC_ENDPOINT}/items`);
+
   const onChangeOfTabs = (key: string) => {
     console.log(key);
   };
@@ -149,13 +151,11 @@ function Project() {
                       <Title level={5}>9,997개의 아이템</Title>
 
                       <Row gutter={[16, 16]}>
-                        {Array(30)
-                          .fill(null)
-                          .map((_, index) => (
-                            <Col xs={12} sm={8} lg={6} xl={4} xxl={4} key={index}>
-                              <NFTCard type="collections" />
-                            </Col>
-                          ))}
+                        {items?.map((item: any, index: number) => (
+                          <Col xs={12} sm={8} lg={6} xl={4} xxl={4} key={index}>
+                            <NFTCard type="collections" item={item} />
+                          </Col>
+                        ))}
                       </Row>
                     </Space>
                   ),
