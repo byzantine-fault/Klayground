@@ -16,10 +16,11 @@ import {
 } from 'antd';
 import { ellipsisMiddle } from '../../../../lib/ellipsisMiddle';
 import { ClockCircleOutlined, EyeFilled, TagOutlined, WalletOutlined } from '@ant-design/icons';
+import useSWR from 'swr';
+import Caver from 'caver-js';
+const caver = new Caver('https://api.baobab.klaytn.net:8651');
 
 const { Title, Link, Text, Paragraph } = Typography;
-
-const projectContractAddress = '0xce70eef5adac126c37c8bc0c1228d48b70066d03';
 
 const onChangeOfTabs = (key: string) => {
   console.log(key);
@@ -27,54 +28,42 @@ const onChangeOfTabs = (key: string) => {
 
 function Item() {
   const router = useRouter();
+  const { data: detail } = useSWR(`${process.env.NEXT_PUBLIC_ENDPOINT3}/detail`);
+
   return (
     <Row justify="center">
       <Col xl={22} xxl={16}>
-        <Row justify="center" gutter={[16, 16]}>
-          <Col span={10}>
-            <div
+        <Row justify="center" gutter={[32, 16]}>
+          <Col xs={22} lg={10}>
+            <Image
+              alt="example"
+              src={detail?.imageUrl}
               style={{
-                overflow: 'hidden',
-                height: '100%',
-                width: 'min(35% - 28px,420px)',
-                position: 'fixed',
+                width: '100%',
+                height: 'auto',
+                objectFit: 'cover',
+                objectPosition: 'center center',
               }}
-            >
-              <Image
-                alt="example"
-                src="https://dwckk6v6uouee.cloudfront.net/project/0xCe70EEf5ADaC126C37c8BC0c1228d48B70066d03/token/25c5935addf624d9fb3a1447622f005c17cf8fd66b96c71f15fcd43febceb803.png"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  objectFit: 'cover',
-                  objectPosition: 'center center',
-                }}
-              />
-            </div>
+            />
           </Col>
-          <Col span={14}>
+          <Col xs={22} lg={14}>
             <Space direction="vertical" style={{ width: '100%' }}>
-              <Title level={2}>Bellygom#4228</Title>
+              <Title level={2}>{detail?.name}</Title>
               <Space size={'large'}>
                 <Space>
-                  <Avatar
-                    size={32}
-                    src={
-                      'https://dwckk6v6uouee.cloudfront.net/project/0xCe70EEf5ADaC126C37c8BC0c1228d48B70066d03/logo.gif'
-                    }
-                  />
+                  <Avatar size={32} src={detail?.imageUrl} />
                   <Link onClick={() => router.push('/project/1')}>BELLYGOM</Link>
                 </Space>
                 <Space>
                   <Text type="secondary">소유자</Text>
                   <Link onClick={() => router.push('/profile/1')}>
-                    {ellipsisMiddle('0x8F06fe2c39BD3655027f4331C7DC6d6660b1FA68')}
+                    {ellipsisMiddle(detail?.ownerWalletAddress)}
                   </Link>
                 </Space>
               </Space>
               <Space size={'large'}>
                 <Text type="secondary">
-                  <EyeFilled /> 60 조회
+                  <EyeFilled /> {detail?.viewCount} 조회
                 </Text>
               </Space>
               <Divider />
@@ -82,7 +71,8 @@ function Item() {
                 <ClockCircleOutlined /> 판매 종료까지 <strong>174일 2시간</strong> 남음
               </Text>
               <Title level={2}>
-                1,300 <Text style={{ fontSize: '1rem' }}>KLAY</Text>
+                {caver.utils.convertFromPeb(`${String(detail?.listPriceInKlay || 0)}`, 'KLAY')}{' '}
+                <Text style={{ fontSize: '1rem' }}>KLAY</Text>
               </Title>
               <Row gutter={[8, 8]}>
                 <Col span={12}>
@@ -158,16 +148,16 @@ function Item() {
                           <Link
                             onClick={() =>
                               window.open(
-                                `https://scope.klaytn.com/account/${projectContractAddress}`
+                                `https://scope.klaytn.com/account/${detail?.projectContractAddress}`
                               )
                             }
                           >
-                            {ellipsisMiddle(projectContractAddress)}
+                            {ellipsisMiddle(detail?.projectContractAddress)}
                           </Link>
                         </Space>
                         <Space style={{ display: 'flex', justifyContent: 'space-between' }}>
                           <Text type="secondary">토큰 아이디</Text>
-                          <Text>8895</Text>
+                          <Text>{detail?.tokenId}</Text>
                         </Space>
                         <Space style={{ display: 'flex', justifyContent: 'space-between' }}>
                           <Text type="secondary">토큰 스탠다드</Text>
@@ -190,62 +180,21 @@ function Item() {
                 아이템 특성
               </Divider>
               <Row gutter={[8, 8]}>
-                <Col span={6}>
-                  <Card bodyStyle={{ paddingTop: 12, paddingBottom: 12 }}>
-                    <Statistic title="Acc" value={'None'} valueStyle={{ fontSize: '1rem' }} />
-                    <Text type="secondary">희소성 69.2%</Text>
-                  </Card>
-                </Col>
-                <Col span={6}>
-                  <Card bodyStyle={{ paddingTop: 12, paddingBottom: 12 }}>
-                    <Statistic
-                      title="Body"
-                      value={'Belly Pink'}
-                      valueStyle={{ fontSize: '1rem' }}
-                    />
-                    <Text type="secondary">희소성 97.07%</Text>
-                  </Card>
-                </Col>
-                <Col span={6}>
-                  <Card bodyStyle={{ paddingTop: 12, paddingBottom: 12 }}>
-                    <Statistic
-                      title="Body"
-                      value={'Belly Pink'}
-                      valueStyle={{ fontSize: '1rem' }}
-                    />
-                    <Text type="secondary">희소성 97.07%</Text>
-                  </Card>
-                </Col>
-                <Col span={6}>
-                  <Card bodyStyle={{ paddingTop: 12, paddingBottom: 12 }}>
-                    <Statistic
-                      title="Body"
-                      value={'Belly Pink'}
-                      valueStyle={{ fontSize: '1rem' }}
-                    />
-                    <Text type="secondary">희소성 97.07%</Text>
-                  </Card>
-                </Col>
-                <Col span={6}>
-                  <Card bodyStyle={{ paddingTop: 12, paddingBottom: 12 }}>
-                    <Statistic
-                      title="Body"
-                      value={'Belly Pink'}
-                      valueStyle={{ fontSize: '1rem' }}
-                    />
-                    <Text type="secondary">희소성 97.07%</Text>
-                  </Card>
-                </Col>
-                <Col span={6}>
-                  <Card bodyStyle={{ paddingTop: 12, paddingBottom: 12 }}>
-                    <Statistic
-                      title="Body"
-                      value={'Belly Pink'}
-                      valueStyle={{ fontSize: '1rem' }}
-                    />
-                    <Text type="secondary">희소성 97.07%</Text>
-                  </Card>
-                </Col>
+                {detail &&
+                  Object.entries(detail?.attributes).map((attribute: any, index: number) => (
+                    <Col key={index} xs={12} lg={6}>
+                      <Card bodyStyle={{ padding: 12 }}>
+                        <Statistic
+                          title={attribute[0]}
+                          value={attribute[1].value}
+                          valueStyle={{ fontSize: '14px', wordBreak: 'keep-all' }}
+                        />
+                        <Text type="secondary">
+                          희소성 {Math.round(attribute[1].rarity * 0.1) / 100}%
+                        </Text>
+                      </Card>
+                    </Col>
+                  ))}
               </Row>
               <Divider orientation="left" orientationMargin="0" plain>
                 이 아이템이 속한 컬렉션

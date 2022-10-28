@@ -9,6 +9,10 @@
 .ant-menu-horizontal {
   border-bottom: 0px;
 }
+.ant-menu-vertical,
+.ant-menu-inline {
+  border-right: 0px;
+}
 
 .ant-btn {
   clip-path: polygon(12px 0px, 100% 0px, 100% 72%, calc(100% - 12px) 100%, 0px 100%, 0px 12px);
@@ -141,8 +145,11 @@ body,
   margin-top: 5px;
 }
 
-.ant-dropdown-menu-item:hover {
+.ant-dropdown-menu-item:hover,
+.ant-dropdown-menu-item-active {
   background: rgba(0, 0, 0, 0) !important;
+}
+.ant-dropdown-menu-item:hover {
   color: #36cfc9;
 }
 .ant-dropdown-menu-item-only-child:hover .ant-typography {

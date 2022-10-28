@@ -1,0 +1,52 @@
+{
+  "detail": {
+    "name": "Bellygom#5933",
+    "attributes": {
+      "Acc": {
+        "value": "None",
+        "rarity": 69200
+      },
+      "Body": {
+        "value": "Belly Pink",
+        "rarity": 97070
+      },
+      "Head": {
+        "value": "None",
+        "rarity": 49070
+      },
+      "Rank": {
+        "value": 9838,
+        "rarity": 810
+      },
+      "Grade": {
+        "value": "Friends",
+        "rarity": 43660
+      },
+      "Clothes": {
+        "value": "Black Space Tshirt",
+        "rarity": 2640
+      },
+      "Special": {
+        "value": "None",
+        "rarity": 98200
+      },
+      "Background": {
+        "value": "Tri Gradient",
+        "rarity": 2600
+      }
+    },
+    "projectContractAddress": "0xce70eef5adac126c37c8bc0c1228d48b70066d03",
+    "tokenId": "5933",
+    "viewCount": 73,
+    "animationUrl": null,
+    "updatedAt": "2022-10-26T00:53:35.417Z",
+    "ownerWalletAddress": "0x0fb6586aeb33b2398a35b7670d693601e5ed6fe2",
+    "lastPriceInKlay": null,
+    "bestOfferPriceInKlay": null,
+    "listPriceInKlay": "995000000000000000000",
+    "listExpirationBlockNumber": 107548391,
+    "likedCount": 0,
+    "imageUrl": "https://dwckk6v6uouee.cloudfront.net/project/0xce70eef5adac126c37c8bc0c1228d48b70066d03/token/8d64b0b02025e91f2ce2ba31e3fdc0b53a44ed20edb57104025dfa0ee600735e.png",
+    "liked": false
+  }
+}

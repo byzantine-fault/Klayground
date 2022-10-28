@@ -22,7 +22,7 @@ const { Title, Text, Paragraph } = Typography;
 const projectContractAddress = '0xce70eef5adac126c37c8bc0c1228d48b70066d03';
 
 function Project() {
-  const { data: items } = useSWR(`${process.env.NEXT_PUBLIC_ENDPOINT}/items`);
+  const { data: items } = useSWR(`${process.env.NEXT_PUBLIC_ENDPOINT2}/items`);
 
   const onChangeOfTabs = (key: string) => {
     console.log(key);

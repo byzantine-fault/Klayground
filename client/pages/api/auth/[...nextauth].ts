@@ -20,7 +20,7 @@ const createOptions: any = (req: any) => ({
         if (!address || !network) throw new Error('Missing address or network');
         return (
           axios
-            .get(`http://localhost:5000/user`)
+            .get(`http://localhost:5003/user`)
             .then((response) => {
               return response.data[0];
             })

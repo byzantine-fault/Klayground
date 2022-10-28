@@ -25,7 +25,7 @@ function NFTCard({ type, item }: { type: string; item: any }) {
         >
           <Image
             alt="example"
-            src={item.imageUrl}
+            src={item.imageUrl || 'error'}
             preview={false}
             style={{
               width: '100%',
@@ -33,6 +33,9 @@ function NFTCard({ type, item }: { type: string; item: any }) {
               objectFit: 'cover',
               objectPosition: 'center center',
             }}
+            fallback={
+              'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1920px-No-Image-Placeholder.svg.png?20200912122019'
+            }
           />
         </div>
       }
@@ -40,7 +43,7 @@ function NFTCard({ type, item }: { type: string; item: any }) {
       <Meta
         description={
           <Space direction="vertical" size={1} style={{ width: '135px' }}>
-            <span>{item.name}</span>
+            <span>{item.name || 'name'}</span>
             <Text>
               {' '}
               {caver.utils.convertFromPeb(

@@ -50,7 +50,7 @@ function Profile() {
                       .fill(null)
                       .map((_, index) => (
                         <Col xs={12} sm={8} lg={6} xl={4} xxl={4} key={index}>
-                          <NFTCard type="profile" />
+                          <NFTCard type="profile" item={''} />
                         </Col>
                       ))}
                     {/* <Col span={22}>
