@@ -35,8 +35,12 @@ function LayoutMenu() {
           key: '0',
         },
         {
-          label: <Text onClick={() => signOut()}>로그아웃</Text>,
+          label: <Text onClick={() => router.push('/create/collections')}>NFT 제작</Text>,
           key: '1',
+        },
+        {
+          label: <Text onClick={() => signOut()}>로그아웃</Text>,
+          key: '2',
         },
       ]}
     />

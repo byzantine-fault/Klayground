@@ -155,3 +155,10 @@ body,
 .ant-dropdown-menu-item-only-child:hover .ant-typography {
   color: #36cfc9;
 }
+
+.ant-steps-item-wait .ant-steps-item-icon {
+  border-color: #e5e1e6;
+}
+.ant-steps-item-wait .ant-steps-item-icon > .ant-steps-icon {
+  color: #e5e1e6;
+}
