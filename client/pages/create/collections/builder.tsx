@@ -1,7 +1,9 @@
 import { Col, Row, Space, Steps } from 'antd';
 import React, { useState } from 'react';
+import { useRecoilState } from 'recoil';
 import CollectionSetting from '../../../components/create/build/CollectionSetting';
 import CreateMenu from '../../../components/Layout/Create/CreateMenu';
+import { generativeArtBuilder } from '../../../store/GenerativeArtBuilderState';
 
 const { Step } = Steps;
 
@@ -16,15 +18,15 @@ function RevealNFT() {
 }
 
 function Builder() {
-  const [current, setCurrent] = useState(0);
+  const [builderState, setBuilderState] = useRecoilState(generativeArtBuilder);
 
   const onChange = (value: number) => {
     console.log('onChange:', value);
-    setCurrent(value);
+    setBuilderState({ currentPage: value });
   };
 
   const renderStep = () => {
-    switch (current) {
+    switch (builderState.currentPage) {
       case 0:
         return <CollectionSetting />;
       case 1:
@@ -46,7 +48,7 @@ function Builder() {
           <Space direction="vertical" style={{ width: '100%' }} size={'large'}>
             <Steps
               type="navigation"
-              current={current}
+              current={builderState.currentPage}
               onChange={onChange}
               className="site-navigation-steps"
             >
@@ -56,7 +58,7 @@ function Builder() {
               <Step status="wait" title="Reveal NFT" />
             </Steps>
             <Row justify="center">
-              <Col xs={24} lg={16}>
+              <Col xs={24} lg={16} style={{ padding: '6rem 0px' }}>
                 {renderStep()}
               </Col>
             </Row>
