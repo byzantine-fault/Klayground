@@ -173,3 +173,22 @@ body,
   width: 300px;
   height: 300px;
 }
+
+tr.ant-table-expanded-row > td,
+tr.ant-table-expanded-row:hover > td {
+  background: rgba(0, 0, 0, 0);
+}
+
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab,
+.ant-tabs > .ant-tabs-nav .ant-tabs-nav-add {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab,
+.ant-tabs > .ant-tabs-nav .ant-tabs-nav-add {
+  border-radius: 8px 8px 0px 0px;
+}
+
+.ant-collapse {
+  background-color: rgba(0, 0, 0, 0);
+}

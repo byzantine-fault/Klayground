@@ -2,17 +2,13 @@ import { Col, Row, Space, Steps } from 'antd';
 import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import CollectionSetting from '../../../components/create/build/CollectionSetting';
+import GenerativeArtBuilder from '../../../components/create/build/GenerativeArtBuilder';
+import ImageConfirm from '../../../components/create/build/ImageConfirm';
 import CreateMenu from '../../../components/Layout/Create/CreateMenu';
 import { generativeArtBuilder } from '../../../store/GenerativeArtBuilderState';
 
 const { Step } = Steps;
 
-function GenerativeArtBuilder() {
-  return <div>GenerativeArtBuilder</div>;
-}
-function ImageConfirm() {
-  return <div>ImageConfirm</div>;
-}
 function RevealNFT() {
   return <div>RevealNFT</div>;
 }
@@ -57,11 +53,7 @@ function Builder() {
               <Step status="wait" title="IMG Render & Confirm" />
               <Step status="wait" title="Reveal NFT" />
             </Steps>
-            <Row justify="center">
-              <Col xs={24} lg={16} style={{ padding: '6rem 0px' }}>
-                {renderStep()}
-              </Col>
-            </Row>
+            {renderStep()}
           </Space>
         </Col>
       </Row>

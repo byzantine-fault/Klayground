@@ -182,8 +182,8 @@ function Item() {
               <Row gutter={[8, 8]}>
                 {detail &&
                   Object.entries(detail?.attributes).map((attribute: any, index: number) => (
-                    <Col key={index} xs={12} lg={6}>
-                      <Card bodyStyle={{ padding: 12 }}>
+                    <Col key={index} xs={12} lg={6} style={{ display: 'flex' }}>
+                      <Card style={{ width: '100%' }} bodyStyle={{ padding: 12 }}>
                         <Statistic
                           title={attribute[0]}
                           value={attribute[1].value}
